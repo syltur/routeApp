@@ -1,57 +1,17 @@
 *, *::before, *::after {
   box-sizing: border-box; 
 }
-  
+
 body {
   margin: 0;
   text-align: center;
   background-color: $third-color;
 }
-.header {
-  height: 100vh;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  position: relative;
-  .header-inner {
-    position: absolute;
-    width: 100vh;
-    left: 50%;
-    transform: translateX(-50%);
 
-  }
-}
-
-.menu {
-  margin-bottom: 50px;
-  text-align: center;
-  ul {
-    list-style-type: none;
-    li {
-      display: inline-block;
-      margin-right: 36px;
-      a {
-        color: $first-color;
-        text-decoration: none;
-        font-weight: bold;
-        display: none;
-      }
-      a:hover {
-        color: $second-color;
-      }
-      &.active {
-        display: block;
-        background-color: aqua;
-      }
-    }
-  }
-}
-
-
-.logo {
-  text-align: center;
-  width: 100vh;
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .btn {

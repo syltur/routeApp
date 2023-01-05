@@ -1,30 +1,29 @@
 {
   'use strict';
     
-  class about{
+  class menu{
     constructor(){
       const thisPage = this;
 
       thisPage.initActions();
     }
     initActions(){
-      const menuLinks = document.querySelectorAll('.list a'),
-        aboutInnerWrapper = document.querySelector('.about-inner-wrapper');
+      const menuLinks = document.querySelectorAll('.menu ul li a');
       for (let menuLink of menuLinks){
-        menuLink.addEventListener('click', function(){
-          aboutInnerWrapper.classList.add('active');
+        menuLink.addEventListener('click', function(event){
+          event.preventDefault();
+          const subpages = document.querySelectorAll('.subpage');
+          const clickedElement = event.target;
+          const clickedElementId = clickedElement.getAttribute('id');
+          for(let subpage of subpages){
+            if (subpage.getAttribute('id') === clickedElementId) {
+              subpage.classList.add('active');
+            }
+          }
         });
       }
     }
   }
-  const app1 = new about();
-  console.log(app1);
-
-  class finder{
-    constructor(){
-
-    }
-  }
-  const app2 = new finder();
-  console.log(app2);
+  const app = new menu();
+  console.log(app);
 }

@@ -20,11 +20,22 @@ h2 {
 }
 
 h3 {
-  font-size: 40px;
+  font-size: 30px;
   color: $first-color;
 }
 
 h4 {
   font-size: 20px;
   color: $first-color;
+}
+.minimalize-text p, .plan-text p {
+  font-size: 15px;
+  color: $first-color;
+  letter-spacing: 2px;
+  line-height: 0.5px;
+}
+.footer_text {
+  font-size: 10px;
+  color: $first-color;
+  letter-spacing: 2px;
 }
