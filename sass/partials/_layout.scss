@@ -5,7 +5,6 @@
   background-size: cover;
   background-attachment: local;
   position: relative;
-  opacity: 0.9;
   .header-inner {
     position: absolute;
     width: 100vh;
@@ -36,12 +35,12 @@
 }
 
 
-/*.subpage {
+.subpage {
   display: none;
-  .active {
-    display: block;
-  }
-}*/
+}
+.subpage.active {
+  display: block;
+}
 
 .logo {
   text-align: center;

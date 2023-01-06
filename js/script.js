@@ -1,29 +1,31 @@
 {
   'use strict';
-    
-  class menu{
-    constructor(){
-      const thisPage = this;
 
+  class Menu {
+    constructor() {
+      const thisPage = this;
       thisPage.initActions();
     }
-    initActions(){
-      const menuLinks = document.querySelectorAll('.menu ul li a');
-      for (let menuLink of menuLinks){
-        menuLink.addEventListener('click', function(event){
+  
+    initActions() {
+      const links = document.querySelectorAll('.menu-link');
+      const subpages = document.querySelectorAll('.subpage');
+
+      for(let link of links){
+        link.addEventListener('click', function(event) {
           event.preventDefault();
-          const subpages = document.querySelectorAll('.subpage');
-          const clickedElement = event.target;
-          const clickedElementId = clickedElement.getAttribute('id');
-          for(let subpage of subpages){
-            if (subpage.getAttribute('id') === clickedElementId) {
+          for (let subpage of subpages) {
+            if (subpage.classList.contains(event.target.classList)) {
               subpage.classList.add('active');
+            } else {
+              subpage.classList.remove('active');
             }
           }
         });
       }
     }
   }
-  const app = new menu();
+  
+  const app = new Menu();
   console.log(app);
 }
