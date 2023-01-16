@@ -9,6 +9,8 @@ class HomePage {
   initActions() {
     const links = document.querySelectorAll('.menu-link');
     const subpages = document.querySelectorAll('.subpage');
+    
+    console.log('123');
     for (let link of links) {
       link.addEventListener('click', function(event) {
         event.preventDefault();

@@ -8,6 +8,7 @@ const app = {
     const thisApp = this;
     thisApp.element = element;
 
+    const homePage = document.querySelector(select.containerOf.pages)
     thisApp.homePage = new HomePage;
   },
 
@@ -22,12 +23,9 @@ const app = {
   init: function (element) {
     const thisApp = this;
     thisApp.initHomePage(element);
-  },
-
-  init: function (element) {
-    const thisApp = this;
     thisApp.initFinder(element);
   },
+
 };
 
 app.init();

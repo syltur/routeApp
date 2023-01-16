@@ -3,7 +3,7 @@ export const select = {
     finder: '#template-finder',
   },
   containerOf: {
-    pages: '.subpage-active',
+    pages: '.pages',
     home: '.home-wrapper',
     finder: '.finder-wrapper',
     hero: '#hero',
@@ -20,7 +20,7 @@ export const select = {
 
 export const classNames = {
   pages: {
-    active: 'active',
+    active: '.subpage-active',
   },
   finder: {
     field: '.field',
