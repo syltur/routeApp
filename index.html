@@ -7,66 +7,87 @@
     <meta name="keywords" content="route, pathfinder, travel, guide">
     <meta name="author" content="Sylwia Tur">
     <title>PATHFINDER</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>draw routes</title>
   </head>
+  
   <body>
-    <section class="header">
-      <div class="container">
-        <div class="header-inner">
+    <header>
+      <section id="hero">
+        <div class="container">
+          <div class="gradient"></div>
+          <img src="images/background.jpg" alt="photo of desert" />
           <div class="menu">
             <ul>
               <li><a href="#about" class="about menu-link">ABOUT</a></li>
               <li><a href="#finder" class="finder menu-link">FINDER</a></li>
             </ul>
           </div>
+          
           <div class="logo">
-            <h1>PATHFINDER</h1>
-            <h2>FOR TRAVELERS</h2>
+            <h1 class="main-title">PATHFINDER</h1>
+            <h2 class="subtitle">FOR TRAVELERS</h2>
+          </div>
+        </div>
+      </section>
+    </header>
+    
+  
+    <section class="pages">
+      <div class="about subpage subpage-active" >
+        <div class="container">
+          <div class="plan">
+            <div class="plan-text">
+              <h3>PLAN YOUR JOURNEYS</h3>
+              <p>Pick attractions and book hotels</p>
+            </div>                 
+            <div class="plan-img">
+              <img src="../images/1.jpg">
+            </div>
+          </div>
+          <div class="minimalize">
+            <div class="minimalize-text">
+              <h3>MINIMALIZE BOREDOM</h3>
+              <p>Pick routes that are short and attractive</p>
+            </div>
+            <div class="minimalize-img">
+              <img src="../images/2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container"> 
+        <div class="finder-wrapper subpage">
+          <div class="route_app_div">
+            <h2></h2>
+          </div>
+          <div class="route_table">
+
+          </div>
+          <div class="button_table">
+              
           </div>
         </div>
       </div>
     </section>
-      
-      <section class="pages">
-        <div class="about subpage" >
-          <div class="container">
-            <div class="plan">
-              <div class="plan-text">
-                <h3>PLAN YOUR JOURNEYS</h3>
-                <p>Pick attractions and book hotels</p>
-              </div>                 
-              <div class="plan-img">
-                <img src="../images/1.jpg">
-              </div>
-            </div>
-            <div class="minimalize">
-              <div class="minimalize-text">
-                <h3>MINIMALIZE BOREDOM</h3>
-                <p>Pick routes that are short and attractive</p>
-              </div>
-              <div class="minimalize-img">
-                <img src="../images/2.jpg">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="finder subpage"> 
-          <div class="finder-wrapper container">
-            <div class="route_app_div">
-              <h2></h2>
-            </div>
-            <div class="route_table">
+    <section class="footer">
+      <p class="footer_text">All rights reserved</p>
+    </section>
 
-            </div>
-            <div class="button_table">
-                
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="footer">
-        <p class="footer_text">All rights reserved</p>
-      </section>
+      <script id="template-finder" type="text/x-handlebars-template">
+        <h3>{{ title }}</h3>
+        <div class="finder"></div>
+        <button class="btn">{{ btnText }}</button>
+      </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="js/app.js" type="module"></script>
   </body>
-</html>
+  
+  </html>
+  

@@ -1,0 +1,37 @@
+.finder-wrapper {
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* GRID */
+.finder {
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  width: $basic-field-size * 10;
+  height: $basic-field-size * 10;
+  margin: $basic-field-size auto;
+}
+
+.field {
+  z-index: 5;
+  width: $basic-field-size;
+  height: $basic-field-size;
+  border: solid 1px $color-light;
+}
+
+.active {
+  background-color: $color-main;
+
+  &.start-point {
+    background-color: $color-success;
+  }
+
+  &.finish-point {
+    background-color: $color-warning;
+  }
+
+  &.valid {
+    background-color: $color-success;
+  }
+}

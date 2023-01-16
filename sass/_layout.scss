@@ -1,0 +1,16 @@
+/* reguły uniwersalne tyczące się układu strony,
+np. container, klady gridowe itp. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  padding: 30px 60px;
+}
+
