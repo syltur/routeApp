@@ -9,6 +9,7 @@
     <title>PATHFINDER</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
       rel="stylesheet" />
@@ -17,75 +18,71 @@
   </head>
   
   <body>
-    <header>
-      <section id="hero">
-        <div class="container">
-          <div class="gradient"></div>
-          <img src="images/background.jpg" alt="photo of desert" />
-          <div class="menu">
-            <ul>
-              <li><a href="#about" class="about menu-link">ABOUT</a></li>
-              <li><a href="#finder" class="finder menu-link">FINDER</a></li>
-            </ul>
-          </div>
-          
-          <div class="logo">
-            <h1 class="main-title">PATHFINDER</h1>
-            <h2 class="subtitle">FOR TRAVELERS</h2>
-          </div>
-        </div>
-      </section>
-    </header>
-    
-  
-    <section class="pages">
-      <div class="about subpage" >
-        <div class="container">
-          <div class="plan">
-            <div class="plan-text">
-              <h3>PLAN YOUR JOURNEYS</h3>
-              <p>Pick attractions and book hotels</p>
-            </div>                 
-            <div class="plan-img">
-              <img src="../images/1.jpg">
-            </div>
-          </div>
-          <div class="minimalize">
-            <div class="minimalize-text">
-              <h3>MINIMALIZE BOREDOM</h3>
-              <p>Pick routes that are short and attractive</p>
-            </div>
-            <div class="minimalize-img">
-              <img src="../images/2.jpg">
-            </div>
-          </div>
-        </div>
+    <section class="header">
+      <div class="gradient"></div>
+      <div class="menu">
+        <ul>
+          <li><a href="#about" class="menu-link" data-page="about">ABOUT</a></li>
+          <li><a href="#finder" class="menu-link" data-page="finder-wrapper">FINDER</a></li>
+        </ul>
       </div>
-      <div class="container"> 
-        <div class="finder-wrapper subpage subpage-active">
-          <div class="route_app_div">
-            <h2></h2>
+      
+      <div class="logo">
+        <h1 class="main-title">PATHFINDER</h1>
+        <h2 class="subtitle">FOR TRAVELERS</h2>
+      </div>
+    </section>
+    
+  <div class="content">
+    <section class="pages">
+      <div class="about subpage subpage-active " data-page="about" >
+        <div class="plan" data-aos="fade-right" data-aos-duration="1000">
+          <div class="plan-text">
+            <h4>PLAN YOUR JOURNEYS</h4>
+            <p>Pick attractions and book hotels</p>
+          </div>                 
+          <div class="plan-img">
+            <img src="../images/1.jpg">
           </div>
-          <div class="route_table">
+        </div>
+        <div class="minimalize" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="400">
+          <div class="plan-text">
+          <div class="minimalize-text">
+            <h4>MINIMALIZE BOREDOM</h4>
+            <p>Pick routes that are short and attractive</p>
+          </div>
+          <div class="minimalize-img">
+            <img src="../images/2.jpg">
+          </div>
+        </div>
+       </div>
+      </div>
+      <div class="finder-wrapper subpage" data-aos="zoom-in" data-aos-duration="1000" data-aos-offset="400" data-page="finder-wrapper">
+        <div class="route_app_div">
+          <h2></h2>
+        </div>
+        <div class="route_table">
 
-          </div>
-          <div class="button_table">
-              
-          </div>
+        </div>
+        <div class="button_table">
+            
         </div>
       </div>
     </section>
     <section class="footer">
       <p class="footer_text">All rights reserved</p>
     </section>
-
+  </div>
       <script id="template-finder" type="text/x-handlebars-template">
         <h3>{{ title }}</h3>
         <div class="finder"></div>
         <button class="btn">{{ btnText }}</button>
       </script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script src="js/app.js" type="module"></script>
   </body>
   

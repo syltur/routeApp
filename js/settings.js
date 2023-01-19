@@ -20,7 +20,7 @@ export const select = {
 
 export const classNames = {
   pages: {
-    active: '.subpage-active',
+    active: 'subpage-active',
   },
   finder: {
     field: '.field',

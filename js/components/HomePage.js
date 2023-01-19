@@ -10,13 +10,15 @@ class HomePage {
     const links = document.querySelectorAll('.menu-link');
     const subpages = document.querySelectorAll('.subpage');
     
-    console.log('123');
     for (let link of links) {
       link.addEventListener('click', function(event) {
         event.preventDefault();
         for (let subpage of subpages) {
-          subpage.classList.toggle(classNames.pages.active);
+          subpage.classList.remove(classNames.pages.active);
         }
+        const selector =`.subpage.${link.getAttribute('data-page')}`;
+        const subpage = document.querySelector(selector);
+        subpage.classList.add(classNames.pages.active);
       });
     }
   }
