@@ -29,7 +29,8 @@ export const classNames = {
     startPoint: 'start-point',
     finishPoint: 'finish-point',
     edgeField: 'edge-field',
-    checkedField: 'checked-field'
+    checkedField: 'checked-field',
+    shortestPathField: 'shortestPathField'
   },
 };
 

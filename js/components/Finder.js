@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { templates, select, classNames } from '../settings.js';
 
 class Finder {
@@ -8,8 +9,11 @@ class Finder {
 
     thisFinder.step = 1;
 
+    thisFinder.start = { row: null, col: null };
+
     thisFinder.render();
     thisFinder.getElements();
+    // thisFinder.initAction();
 
     thisFinder.grid = {};
     for (let row = 1; row <= 10; row++) {
@@ -129,7 +133,8 @@ class Finder {
         thisFinder.changeStep(1);
       });
 
-      thisFinder.findRoute();
+      const result = thisFinder.findRoute();
+      console.log(result);
     }
   }
 
@@ -152,15 +157,13 @@ class Finder {
       if (gridValues.includes(true)) {
         const edgeFields = [];
         if (field.col > 1)
-          edgeFields.push(thisFinder.grid[field.row][+field.col - 1]);
+          edgeFields.push(thisFinder.grid[field.row][+field.col - 1]); 
         if (field.col < 10)
-          edgeFields.push(thisFinder.grid[field.row][+field.col + 1]);
+          edgeFields.push(thisFinder.grid[field.row][+field.col + 1]); 
         if (field.row > 1)
           edgeFields.push(thisFinder.grid[+field.row - 1][field.col]);
         if (field.row < 10)
-          edgeFields.push(thisFinder.grid[+field.row + 1][field.col])
-
-      
+          edgeFields.push(thisFinder.grid[+field.row + 1][field.col]); 
         if (!edgeFields.includes(true)) {
           alert(
             'A new field should touch at least one that is already selected!'
@@ -173,6 +176,7 @@ class Finder {
 
       thisFinder.grid[field.row][field.col] = true;
       fieldElem.classList.add('active');
+      thisFinder.edgeFields.classList.add('edge-field');
     }
   }
 
@@ -184,12 +188,19 @@ class Finder {
       col: extremePoint.getAttribute('data-col'),
     };
 
+    if (thisFinder.grid[point.row][point.col] !== true) {
+      return alert('error');
+    }
+
     const gridValues = Object.values(thisFinder.grid)
       .map((col) => Object.values(col))
       .flat();
 
     if (!gridValues.includes('Start')) {
       thisFinder.grid[point.row][point.col] = 'Start';
+      thisFinder.start.row = +point.row;
+      thisFinder.start.col = +point.col;
+      thisFinder.startPoint.push(point.row, point.col);
       extremePoint.classList.add(classNames.finder.extremePoint),
         extremePoint.classList.add(classNames.finder.startPoint);
     }
@@ -199,9 +210,11 @@ class Finder {
       thisFinder.grid[point.row][point.col] !== 'Start'
     ) {
       thisFinder.grid[point.row][point.col] = 'Finish';
+      thisFinder.finishPoint.push(point.row, point.col);
       extremePoint.classList.add(classNames.finder.extremePoint),
         extremePoint.classList.add(classNames.finder.finishPoint);
     }
+    console.log(gridValues);
   }
 
   findRoute() {
@@ -216,36 +229,62 @@ class Finder {
 
     const routes = [startLocation];
 
+    const paths = [];
+
     while (routes.length) {
       const currentLocation = routes.shift();
 
+      if (
+        thisFinder.grid[currentLocation.row][currentLocation.col] !== 'Start' &&
+        thisFinder.grid[currentLocation.row][currentLocation.col] !== 'Finish'
+      ) {
+        thisFinder.grid[currentLocation.row][currentLocation.col] = 'Checked';
+      }
+
       let nextLocation = thisFinder.checkMove(currentLocation, 'up');
-      if (nextLocation.status === 'finish-point') {
+      if (nextLocation.status === 'Finish') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid' && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'Valid' &&
+        nextLocation.status !== 'Checked'
+      ) {
+        routes.push(nextLocation);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'right');
-      if (nextLocation.status === 'finish-point') {
+      if (nextLocation.status === 'Finish') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'Valid' &&
+        nextLocation.status !== 'Checked'
+      ) {
+        routes.push(nextLocation);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'down');
-      if (nextLocation.status === 'finish-point') {
+      if (nextLocation.status === 'Finish') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'Valid' &&
+        nextLocation.status !== 'Checked'
+      ) {
+        routes.push(nextLocation);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'left');
-      if (nextLocation.status === 'finish-point') {
+      if (nextLocation.status === 'Finish') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'Valid' &&
+        nextLocation.status !== 'Checked'
+      ) {
+        routes.push(nextLocation);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
     }
 
-    return false;
+    console.log(routes);
+    return paths;
   }
 
   checkMove(location, direction) {
@@ -271,14 +310,25 @@ class Finder {
   }
 
   checkLocationStatus(location) {
-    if (location !== 'field') {
+    const thisFinder = this;
+    const { row, col } = location;
+    const { grid } = thisFinder;
+
+    console.log('row', row);
+    console.log('col', col);
+    console.log('grid', grid);
+
+    if (row < 1 || row > 10 || col < 1 || col > 10) {
       return false;
-    } else if (location === 'finish-point') {
-      return 'finish-point';
-    } else if (location === 'valid') {
-      return 'valid';
+    } else if (grid[row][col] === 'Checked') {
+      console.log('checked', row, col);
+      return false;
+    } else if (grid[row][col] === 'Finish') {
+      return 'Finish';
+    } else if (grid[row][col] === true) {
+      return 'Valid';
     } else {
-      return 'false';
+      return false;
     }
   }
 }
