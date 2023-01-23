@@ -176,7 +176,7 @@ class Finder {
 
       thisFinder.grid[field.row][field.col] = true;
       fieldElem.classList.add('active');
-      thisFinder.edgeFields.classList.add('edge-field');
+      // thisFinder.edgeFields.classList.add('edge-field');
     }
   }
 
@@ -200,7 +200,7 @@ class Finder {
       thisFinder.grid[point.row][point.col] = 'Start';
       thisFinder.start.row = +point.row;
       thisFinder.start.col = +point.col;
-      thisFinder.startPoint.push(point.row, point.col);
+      // thisFinder.startPoint.push(point.row, point.col);
       extremePoint.classList.add(classNames.finder.extremePoint),
         extremePoint.classList.add(classNames.finder.startPoint);
     }
@@ -210,7 +210,7 @@ class Finder {
       thisFinder.grid[point.row][point.col] !== 'Start'
     ) {
       thisFinder.grid[point.row][point.col] = 'Finish';
-      thisFinder.finishPoint.push(point.row, point.col);
+      // thisFinder.finishPoint.push(point.row, point.col);
       extremePoint.classList.add(classNames.finder.extremePoint),
         extremePoint.classList.add(classNames.finder.finishPoint);
     }
@@ -249,7 +249,7 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        nextLocation.classList.add(classNames.finder.checkedField);
+        // nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'right');
       if (nextLocation.status === 'Finish') {
@@ -259,7 +259,7 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        nextLocation.classList.add(classNames.finder.checkedField);
+        // nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'down');
       if (nextLocation.status === 'Finish') {
@@ -269,7 +269,7 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        nextLocation.classList.add(classNames.finder.checkedField);
+        // nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'left');
       if (nextLocation.status === 'Finish') {
@@ -279,7 +279,7 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        nextLocation.classList.add(classNames.finder.checkedField);
+        // nextLocation.classList.add(classNames.finder.checkedField);
       }
     }
 
