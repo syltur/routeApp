@@ -22,7 +22,6 @@ class Finder {
         thisFinder.grid[row][col] = false;
       }
     }
-    console.log(thisFinder.grid);
   }
 
   render() {
@@ -134,7 +133,6 @@ class Finder {
       });
 
       const result = thisFinder.findRoute();
-      console.log(result);
     }
   }
 
@@ -170,8 +168,6 @@ class Finder {
           );
           return;
         }
-
-        console.log(gridValues);
       }
 
       thisFinder.grid[field.row][field.col] = true;
@@ -214,7 +210,6 @@ class Finder {
       extremePoint.classList.add(classNames.finder.extremePoint),
         extremePoint.classList.add(classNames.finder.finishPoint);
     }
-    console.log(gridValues);
   }
 
   findRoute() {
@@ -249,7 +244,7 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        // nextLocation.classList.add(classNames.finder.checkedField);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'right');
       if (nextLocation.status === 'Finish') {
@@ -259,7 +254,7 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        // nextLocation.classList.add(classNames.finder.checkedField);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'down');
       if (nextLocation.status === 'Finish') {
@@ -269,7 +264,7 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        // nextLocation.classList.add(classNames.finder.checkedField);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'left');
       if (nextLocation.status === 'Finish') {
@@ -279,18 +274,18 @@ class Finder {
         nextLocation.status !== 'Checked'
       ) {
         routes.push(nextLocation);
-        // nextLocation.classList.add(classNames.finder.checkedField);
+        nextLocation.classList.add(classNames.finder.checkedField);
       }
     }
 
-    console.log(routes);
     return paths;
   }
+
 
   checkMove(location, direction) {
     const thisFinder = this;
 
-    const newPath = [...location.path, direction];
+    const newPath = [location.path, direction];
 
     const newLocation = { ...location, path: newPath, status: null };
 
@@ -303,25 +298,44 @@ class Finder {
     } else if (direction === 'left') {
       newLocation.col -= 1;
     }
+newLocation.status = thisFinder.checkLocationStatus(newLocation);
+    let currentLocation = '';
+    let path = thisFinder.checkMove(currentLocation, 'up');
+    if (path && path.status === 'Finish') {
+      return path.path.forEach(direction => {
+        let row = currentLocation.row;
+        let col = currentLocation.col;
+        if (direction === 'up') {
+          row -= 1;
+        } else if (direction === 'right') {
+          col += 1;
+        } else if (direction === 'down') {
+          row += 1;
+        } else if (direction === 'left') {
+          col -= 1;
+        }
+        if(thisFinder.grid[row] && thisFinder.grid[row][col]) {
+          thisFinder.grid[row][col].classList.add(classNames.finder.activeField);
+        }
+      });
+    } else if (path && path.status === 'Valid' && path.status !== 'Checked') {
+      routes.push(path);
+      path.classList.add(classNames.finder.checkedField);
+    }
 
-    newLocation.status = thisFinder.checkLocationStatus(newLocation);
+        return newLocation;
+      }
 
-    return newLocation;
-  }
+  
 
   checkLocationStatus(location) {
     const thisFinder = this;
     const { row, col } = location;
     const { grid } = thisFinder;
 
-    console.log('row', row);
-    console.log('col', col);
-    console.log('grid', grid);
-
     if (row < 1 || row > 10 || col < 1 || col > 10) {
       return false;
     } else if (grid[row][col] === 'Checked') {
-      console.log('checked', row, col);
       return false;
     } else if (grid[row][col] === 'Finish') {
       return 'Finish';
