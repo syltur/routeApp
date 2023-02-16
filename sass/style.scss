@@ -1,9 +1,10 @@
+@import './settings';
 
-@import '_normalize.scss';
-@import '_variables.scss';
-@import '_layout.scss';
-@import '_typography.scss';
-@import '_global.scss';
-
-@import 'pages/about';
-@import 'pages/finder';
+@import 'partials/variables';
+@import 'partials/global';
+@import 'partials/header';
+@import 'partials/typography';
+@import 'partials/aboutpage';
+@import 'partials/pages';
+@import 'partials/finder';
+@import 'partials/animateonscroll';

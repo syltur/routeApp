@@ -1,50 +1,70 @@
 export const select = {
-  temlateOf: {
-    finder: '#template-finder',
+  templateOf: {
+    aboutPage: '#template-about-page',
+    finderPage: '#template-finder-page',
+
   },
   containerOf: {
-    pages: '.pages',
-    home: '.home-wrapper',
-    finder: '.finder-wrapper',
-    hero: '#hero',
+    pages: '#pages',
+    aboutPage: '.about-page-wrapper',
+    finderPage: '.finder-page-wrapper',
+    gridContainer: '.grid-container',
+    buttonWrapper: '.button-wrapper'
+
   },
   nav: {
-    links: '.navbar a',
+    links: '.navigation-bar a',
   },
+
   finder: {
-    grid: '.finder',
-    field: '.field',
-    button: '.btn',
-  },
+    buttonStopDrawing: 'finder-start',
+    buttonStart: '.finder-start',
+    buttonStartFinish: '.finder-start-finish',
+    buttonCompute: '.finder-compute',
+  }
 };
 
 export const classNames = {
+  nav: {
+    active: 'active',
+  },
   pages: {
-    active: 'subpage-active',
+    active: 'active',
   },
   finder: {
-    field: '.field',
-    active: '.active',
-    extremePoint: 'extreme-point',
-    startPoint: 'start-point',
-    finishPoint: 'finish-point',
-    edgeField: 'edge-field',
-    checkedField: 'checked-field',
-    shortestPathField: 'shortestPathField'
+    gridItem: 'grid-item',
+    gridItemClicked: 'grid-item-clicked',
+    gridItemLastClicked: 'grid-item-last-clicked',
+    gridItemStart: 'grid-item-start',
+    gridItemFinish: 'grid-item-finish',
+    gridItemClickable: 'grid-item-clickable',
+    buttonStart: '.finder-start',
+    buttonStartFinish: '.finder-start-finish',
+    buttonCompute: 'finder-compute',
+    buttonActive: 'button-active',
+    start: 'grid-item-start',
+    finish: 'grid-item-finish',
+    path: 'grid-item-path',
+    stageOne: '.stage-one',
+    stageTwo: '.stage-two',
+    stageThree: '.stage-three',
   },
 };
 
 export const settings = {
+  gridRows: '--grid-rows',
+  gridCols: '--grid-cols',
+
   db: {
-    url:
-      '//' +
-      window.location.hostname +
-      (window.location.hostname == 'localhost' ? ':3131' : ''),
+    url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
+    
   },
 };
 
 export const templates = {
-  finder: Handlebars.compile(
-    document.querySelector(select.temlateOf.finder).innerHTML
-  ),
+  aboutPage: Handlebars.compile(document.querySelector(select.templateOf.aboutPage).innerHTML),
+  finderPage: Handlebars.compile(document.querySelector(select.templateOf.finderPage).innerHTML),
+
 };
+
+export default settings;
