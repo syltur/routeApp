@@ -5,10 +5,9 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
+        "ecmaVersion": 2015,
         "sourceType": "module"
     },
-    "plugins": ["import"],
-    
     "rules": {
         "indent": [
             "error",
@@ -28,7 +27,9 @@
         ],
         "no-console": [
             "off"
-        ],
-        "no-prototype-builtins": ["off"]
+        ]
+    },
+    "globals": {
+      "Handlebars": false
     }
 }

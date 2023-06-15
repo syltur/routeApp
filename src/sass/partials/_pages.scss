@@ -1,0 +1,19 @@
+.about-page-wrapper {
+  display: none;
+  margin-top: 12%;
+}
+
+.finder-page-wrapper {
+  margin-top: 5%;
+  display: none;
+  font-weight: bold;
+}
+
+.active .about-page-wrapper{
+  display: block;
+}
+
+.active .finder-page-wrapper {
+  display: block;
+}
+

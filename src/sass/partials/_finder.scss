@@ -1,0 +1,158 @@
+
+.grid-container {
+  
+  justify-content: center;
+  display: grid;
+  grid-template-rows: repeat(var(--grid-rows), 50px);
+  grid-template-columns: repeat(var(--grid-cols), 50px);
+  
+}
+
+.grid-item {
+  padding: 5px;
+  border: 2px solid #ddd;
+  text-align: center;
+  margin-right: -1px;
+  margin-bottom: -1px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1px black;
+
+}
+
+.grid-item-clicked {
+  background-color: orange;
+  z-index: 52;
+}
+
+
+.grid-item-last-clicked {
+  background-color: lightcoral;
+  z-index: 2;
+}
+
+.grid-item-start {
+  background-color: #6868f9;
+}
+
+.grid-item-finish {
+  background-color: purple;
+
+}
+
+
+.finder-instruction {
+  text-align: center;
+  margin-bottom: 8%;
+  text-shadow: 0px 0px 78px black, 0px 0px 28px black;
+
+  h2 {
+    font-family: $font-sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.4vw;
+    text-shadow: 1px 1px 2px black, 0 0 1px black, 0 0 0.2px black;
+
+  }
+}
+
+
+.stage-one {
+  display: none;
+}
+
+.stage-two {
+  display: none;
+}
+
+.stage-three {
+  display: none;
+}
+
+.button-wrapper {
+  margin-top: 3%;
+
+  text-align: center;
+  justify-content: center;
+}
+
+.button {
+  background-color: $color-orange;
+  border: none;
+  height: 60px;
+  width: 200px;
+  color: $color-white;
+  font-size: 18px;
+  letter-spacing: 0.1vw;
+  font-weight: 600;
+}
+
+.finder-start {
+  display: none;
+  background-color: $color-orange;
+  border: none;
+  height: 60px;
+  width: 200px;
+  color: $color-white;
+  font-size: 18px;
+  letter-spacing: 0.1vw;
+  font-weight: 600;
+}
+
+.finder-start-finish {
+  display: none;
+  background-color: $color-orange;
+  border: none;
+  height: 60px;
+  width: 200px;
+  color: $color-white;
+  font-size: 18px;
+  letter-spacing: 0.1vw;
+  font-weight: 600;
+}
+
+.finder-compute {
+  display: none;
+  background-color: $color-orange;
+  border: none;
+  height: 60px;
+  width: 200px;
+  color: $color-white;
+  font-size: 18px;
+  letter-spacing: 0.1vw;
+  font-weight: 600;
+}
+
+.button-active {
+  display: block;
+}
+
+
+.grid-item-path {
+  background-color: $color-green;
+}
+
+.grid-item-clickable {
+  opacity: 0.3;
+  background-color: orange;
+  z-index: 2;
+}
+
+@media (max-width: 967px ) {
+  .grid-container {
+    max-width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 9vw);
+    grid-template-columns: repeat(var(--grid-cols), 9vw);
+  }
+
+  .grid-item {
+    padding: 1px;
+    border: 2px solid #ddd;
+    text-align: center;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    cursor: pointer;
+  
+  }
+}
